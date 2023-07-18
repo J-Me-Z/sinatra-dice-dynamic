@@ -44,15 +44,16 @@ get("/dice/5/4") do
 	@outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, and #{fifth_die} for a total of #{sum}."
 	
   erb(:five_four)
+end
 
+get("/dynamic/:number_of_dice/6") do
+  @rolls = []
 
-  get ("/dynamic/50/6") do
-    @rolls =  []
+  50.times do
+    die = rand(1..6)
 
-    50.times do 
-      die = rand(1..6)
-      @rolls.push(die)
+    @rolls.push(die)
+  end
 
-    end
-    erb(:flexible)
+  erb(:flexible)
 end
